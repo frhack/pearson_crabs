@@ -776,7 +776,7 @@ mixplot = ggplot(crabs.df,aes(x = ratio)) +
   #geom_density(aes(y = ..density.. * (1000 * 0.004)), col = 2)+
     geom_function(
     fun = function(x) {
-      (probE[1] * (dnorm(x, mean = meanE[1], sd = varianceE[1])) + (probE[2]) * (dnorm(x, mean = meanE[2], sd = varianceE[2]))) * 1000 * 0.004
+      (probE[1] * (dnorm(x, mean = meanE[1], sd = varianceE[1])) + (probE[2]) * (dnorm(x, mean = meanE[2], sd = varianceE[1]))) * 1000 * 0.004
     },
     linetype = "dashed",
     lwd = .8,
