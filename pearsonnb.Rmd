@@ -363,7 +363,7 @@ chisq.test(c(0, observed, 0), p=fit, simulate.p.value=F)
 # Pearson calculation in R
 
 We can repeat in R the same calculations done by Karl Pearson by hand.
-At this time there is not a package in R that implements the method of moments used by Pearson, so I used the code from Carlos Enrique Amendola Cerin the appendix od his valuable PhD thesis [Algebraic Statistics of Gaussian Mixtures](https://depositonce.tu-berlin.de/bitstream/11303/7284/4/amendola_ceron_carlos.pdf).
+At this time there is not a package in R that implements the method of moments used by Pearson, so I used the code from Carlos Amendola in the appendix of his valuable PhD thesis [Algebraic Statistics of Gaussian Mixtures](https://depositonce.tu-berlin.de/bitstream/11303/7284/4/amendola_ceron_carlos.pdf).
 
 ```{r}
 
