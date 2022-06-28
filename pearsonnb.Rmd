@@ -132,9 +132,7 @@ ggdensity(crabs.df,
           palette = "jco", add = 'mean') +
 stat_overlay_normal_density(color = "#00AFBB", lwd = 1)
 
-#crabs.df
-#summary(crabs.df)
-#print(sd(crabs.df$ratioj))
+
 ```
 
 ### Q--Q plot
@@ -148,19 +146,20 @@ If the data is normally distributed, the points in a Q-Q plot will lie on a stra
 Conversely, the more the points in the plot deviate significantly from a straight diagonal line, the less likely the set of data follows a normal distribution.
 
 ```{r}
+
 p = ggqqplot(crabs.df, x="ratioj",  palette = c("#00AFBB", "#E7B800"), color="type")
 
-#palette = c("#00AFBB", "#E7B800")
+
 
 p
-#set_palette(p, palette)
+
 ```
 
 ### Box plot
 
 Boxplot shows the median's asymmetry and the presence of many outliers, this is very unlikely in a Gaussian distribution.
 
-```{r, echo=FALSE}
+```{r}
 
 
 
