@@ -71,8 +71,7 @@ ggdraw() + draw_image("pearson_plot.png")
 
 ```
 
-```{r, echo=FALSE}
-library("mixtools")
+```{r}
 data(pearson)
 crabs.pearson_df = pearson
 crabs.pearson_clean_df =pearson[pearson$freq != 0, ]
@@ -120,7 +119,7 @@ gghistogram(crabs.df$ratio,
 
 The comparison between the observed density and a normal distribution with the same mean and variance, highlights that the observed curve is asymmetrical. This is just one hint that underlying distribution may be not a simple Gaussian.
 
-```{r, echo=FALSE}
+```{r}
 #Install and load required packages
 #library(pacman)
 #pacman::p_load('colorspace','ggplot2','patchwork','wesanderson')
@@ -148,7 +147,7 @@ If the data is normally distributed, the points in a Q-Q plot will lie on a stra
 
 Conversely, the more the points in the plot deviate significantly from a straight diagonal line, the less likely the set of data follows a normal distribution.
 
-```{r, echo=FALSE}
+```{r}
 p = ggqqplot(crabs.df, x="ratioj",  palette = c("#00AFBB", "#E7B800"), color="type")
 
 #palette = c("#00AFBB", "#E7B800")
