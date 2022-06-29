@@ -10,7 +10,7 @@ output:
     df_print: paged
 ---
 
-# Weldon observation ad supposition
+# Weldon observation and supposition
 
 In 1892, Weldon and his wife collected extensive data on populations of the crab, Carcinus Moenas, and observed that one trait, the forehead width to the body length ratio, in the crabs from Naples bay actually showed a highly skewed, rather than a normal, distribution.
 
@@ -20,9 +20,9 @@ Weldon wondered whether this distribution could be the result of the population 
 
 ### Method of moments
 
-Pearson derived a ninth degree polynomial in the first 5 moments and located the real roots of this polynomial over a carefully chosen interval. Each root gives a candidate mixture that matches the first 5 moments; there were two valid solutions, among which Pearson selected the one whose 6-th moment was closest to the observed empirical 6-th moment.
+Pearson derived a ninth degree polynomial in the first 5 moments and located the real roots of this polynomial. Each root gives a candidate mixture that matches the first 5 moments; there were two valid solutions, among which Pearson selected the one whose 6-th moment was closest to the observed empirical 6-th moment.
 
-The calculation was formidable and done without the aid of computing machinery of any kind.
+The calculation was formidable and done by hands, without the aid of computing machinery of any kind.
 
 ![](weldon_paper.png)
 
@@ -316,8 +316,8 @@ thresh = head(thresh,-1)
 
 #chisq <- sum((pred-pop)^2 / pred)
 #df <- length(pop) - 2
-#pchisq(chisq, df, lower.tail=FALSE)
-
+#ss= pchisq(chisq, df=6, lower.tail=FALSE)
+#ss
 
 
 testdt <- data.frame(x = thresh, count = pred)
@@ -345,6 +345,13 @@ geom_bar(aes(x = x, y = pop), stat = "identity",
 
 grid.arrange(h1,h2, ncol=2, as.table = FALSE, widths=c(1,1), heights=c(0.5))
 
+```
+
+
+The pValue is very low, we can reject the null hypothesys the data come from the MLE fitted normal distribution. 
+
+
+```{r}
 
 
 
@@ -353,6 +360,8 @@ chisq.test(c(0, observed, 0), p=fit, simulate.p.value=T)
 
 
 chisq.test(c(0, observed, 0), p=fit, simulate.p.value=F)
+
+
 
 
 ```
@@ -809,3 +818,15 @@ mixplot
 
 ```
 
+
+# Reference
+
+[Moment Varieties of Gaussian Mixtures](https://www.researchgate.net/publication/282905710_Moment_Varieties_of_Gaussian_Mixtures)
+
+[Maximum Likelihood Estimates](https://stats.stackexchange.com/a/68238/192966)
+
+[Chi-squared distribution to assess significance](https://stats.stackexchange.com/a/34894/192966)
+
+[Requirements for the Chi-squared test](https://stats.stackexchange.com/questions/16921/how-to-understand-degrees-of-freedom/17148#17148)
+
+[Pearson's polynomial](http://blog.mrtz.org/2014/04/22/pearsons-polynomial.html)
