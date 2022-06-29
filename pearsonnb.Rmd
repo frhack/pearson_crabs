@@ -1,5 +1,6 @@
 ---
 title: "Karl Pearson and the crabs from Naples bay"
+author: "Francesco Pasqualini"
 output:
   html_document:
 ##     css: html-md-01.css
@@ -7,13 +8,6 @@ output:
 ##     highlight: haddock
     code_folding: hide
     df_print: paged
-#output:
-#  html_document:
-#    df_print: paged
-#  powerpoint_presentation: default
-#  beamer_presentation: default
-#  slidy_presentation: default
-#  html_notebook: default
 ---
 
 # Weldon observation ad supposition
@@ -224,10 +218,6 @@ sigma <- sqrt(sigma2)
 likelihood.log <- function(theta, counts, bin.lower, bin.upper) {
   mu <- theta[1]; sigma <- theta[2]  
   -sum(sapply(1:length(counts), function(i) {
-    #print(i)
-    #print(bin.upper[i])
-    #print(bin.lower[i])
-    
     counts[i] * 
       log(pnorm(bin.upper[i], mu, sigma) - pnorm(bin.lower[i], mu, sigma))
   }))
@@ -244,6 +234,9 @@ coefficients
 
 ### Pearson Chi Square test
  
+We need to rearrange bins in order to avoid any low count (less then 5) that causes poor chi-squared approximation.
+
+
 ```{r}
 
 
@@ -272,11 +265,22 @@ zpop = apply(mpop[,], 2, function(x) sum(x))
 mthresh = matrix(thresh,nrow=7,ncol=5)
 zthresh = mthresh[1,]
 
+
+zdf <- data.frame(zthresh,zpop)
+colnames(zdf) <- c("ratio", "count")
+
+zdf
+
+```
+
+Then, for every bin, we predict the population count in the the normal distribution fitted with MLE, and apply the standard chi-squared test (observed frequency vs theoretical probability). 
+
+
+```{r}
+
 pop = zpop
 thresh = zthresh
 thresh <- append(thresh,0.6835 + 0.028)
-
-
 
 
 
@@ -287,11 +291,6 @@ bin.lower = head(bin.lower,-1)
 bin.upper = tail(bin.upper,-1)
 
 bin.mid <- (bin.upper + bin.lower)/2
-
-#pop[28] = 1
-#coefficients <- optim(c(mu, sigma), function(theta) 
-#  likelihood.log(theta, pop,bin.lower, bin.upper ))$par
-
 
 
 
@@ -340,15 +339,13 @@ geom_bar(aes(x = x, y = pop), stat = "identity",
          color = "#E7B800",
              fill = "#E7B800", palette = c("#00AFBB", "#E7B800"))+ scale_y_continuous(breaks = seq(0, 500, 50))+coord_cartesian(ylim=c(0,500))
 
-#plot_grid(h1, h2)
 
-#gridExtra::grid.arrange(h1, h2, nrow = 2)
+
+
 
 grid.arrange(h1,h2, ncol=2, as.table = FALSE, widths=c(1,1), heights=c(0.5))
 
-#h1
 
-#h2
 
 
 set.seed(0)
@@ -374,11 +371,10 @@ f <- function(m, p, mu1, s1, mu2, s2) {
   sum( (m-mm)**2 )
 }
 
-#set.seed(1)
+
 x <- crabs.df$ratiob
 m <- c(mean(x), mean(x^2), mean(x^3), mean(x^4), mean(x^5), mean(x^6) )
-#r <- optim(c(0.5,0,1,4,0.25), function(x) f(m, x[1], x[2], x[3], x[4], x[5]), method="BFGS")$par
-#r
+
 
 PearsonMOM <- function(moms) {
   cums = toCumulants(moms)
@@ -674,14 +670,17 @@ plot(BIC1)
 
 #### EM algorithm variable variance
 
+The EM algorithm, with variable variance, gives qualitatively the same solution as Pearson's method of moments.
+
 ```{r}
 
-densV = densityMclust(crabs.df$ratioj,  modelNames = "V", verbose = F, plot = F)
+densV = densityMclust(crabs.df$ratio,  modelNames = "V", verbose = F, plot = F)
 
 varianceV = sqrt(densV$parameters$variance$sigmasq)
 meanV = densV$parameters$mean
 probV = densV$parameters$pro
 
+cat("(alpha,mu1,mu2,sigma1,sigma2)=",c(probV[1],meanV[1],meanV[2],varianceV[1],varianceV[2]))
 
 mixplot = ggplot(crabs.df,aes(x = ratio)) +
   labs(title="")+
@@ -741,11 +740,13 @@ mixplot
 
 #### EM algorithm equal variance
 
+As we can see the alternative model, with equal variance, gives a less  good fitting for the observed distribution. The Pearson's solution is the better.
+
 ```{r}
 
 
 
-densE = densityMclust(crabs.df$ratiob,  modelNames = "E", verbose = F, plot = F)
+densE = densityMclust(crabs.df$ratio,  modelNames = "E", verbose = F, plot = F)
 
 varianceE = sqrt(densE$parameters$variance$sigmasq)
 meanE = densE$parameters$mean
