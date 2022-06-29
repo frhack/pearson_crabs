@@ -825,8 +825,9 @@ mixplot
 
 # References
 
+[On Certain Correlated Variations in Carcinus maenas (1893) W. F. R. Weldon](https://royalsocietypublishing.org/doi/pdf/10.1098/rspl.1893.0078)
 
-[Mathematical Contributions to the Theory of Evolution Karl Pearson ](https://royalsocietypublishing.org/doi/epdf/10.1098/rsta.1894.0003)
+[Mathematical Contributions to the Theory of Evolution - (1894) Karl Pearson](https://royalsocietypublishing.org/doi/epdf/10.1098/rsta.1894.0003)
 
 [Moment Varieties of Gaussian Mixtures - Carlos Amendola](https://www.researchgate.net/publication/282905710_Moment_Varieties_of_Gaussian_Mixtures)
 
