@@ -823,7 +823,7 @@ mixplot
 ```
 
 
-# Reference
+# References
 
 [Moment Varieties of Gaussian Mixtures - Carlos Amendola](https://www.researchgate.net/publication/282905710_Moment_Varieties_of_Gaussian_Mixtures)
 
