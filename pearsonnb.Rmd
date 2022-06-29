@@ -348,7 +348,6 @@ grid.arrange(h1,h2, ncol=2, as.table = FALSE, widths=c(1,1), heights=c(0.5))
 ```
 
 
-The pValue is very low, we can reject the null hypothesys the data come from the MLE fitted normal distribution. 
 
 
 ```{r}
@@ -365,6 +364,10 @@ chisq.test(c(0, observed, 0), p=fit, simulate.p.value=F)
 
 
 ```
+
+
+The pValue is very low, we can reject the null hypothesis the data come from the MLE fitted normal distribution. 
+
 
 # Pearson calculation in R
 
@@ -667,7 +670,8 @@ pearsonPlot
 ```
 
 # EM Algorithm
-#### Using BIC to find best the model (E equal variance or V variable variance) and the optimal number of components 
+
+We will use BIC to find best the model ("E" equal variance or "V" variable variance) and the optimal number of components 
 
 ```{r results='hide'}
 (hc1 <- hc(data = crabs.df$ratioj, modelName = "V", verbose = F))
@@ -821,7 +825,11 @@ mixplot
 
 # Reference
 
-[Moment Varieties of Gaussian Mixtures](https://www.researchgate.net/publication/282905710_Moment_Varieties_of_Gaussian_Mixtures)
+[Moment Varieties of Gaussian Mixtures - Carlos Amendola](https://www.researchgate.net/publication/282905710_Moment_Varieties_of_Gaussian_Mixtures)
+
+[mclust 5: Clustering, Classification and Density Estimation Using Gaussian Finite Mixture Models - Luca Scrucca](https://journal.r-project.org/archive/2016/RJ-2016-021/RJ-2016-021.pdf)
+
+[MClust R pakage](https://cran.r-project.org/web/packages/mclust/mclust.pdf)
 
 [Maximum Likelihood Estimates](https://stats.stackexchange.com/a/68238/192966)
 
@@ -830,3 +838,4 @@ mixplot
 [Requirements for the Chi-squared test](https://stats.stackexchange.com/questions/16921/how-to-understand-degrees-of-freedom/17148#17148)
 
 [Pearson's polynomial](http://blog.mrtz.org/2014/04/22/pearsons-polynomial.html)
+
