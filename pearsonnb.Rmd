@@ -825,6 +825,9 @@ mixplot
 
 # References
 
+
+[Mathematical Contributions to the Theory of Evolution Karl Pearson ](https://royalsocietypublishing.org/doi/epdf/10.1098/rsta.1894.0003)
+
 [Moment Varieties of Gaussian Mixtures - Carlos Amendola](https://www.researchgate.net/publication/282905710_Moment_Varieties_of_Gaussian_Mixtures)
 
 [mclust 5: Clustering, Classification and Density Estimation Using Gaussian Finite Mixture Models - Luca Scrucca](https://journal.r-project.org/archive/2016/RJ-2016-021/RJ-2016-021.pdf)
