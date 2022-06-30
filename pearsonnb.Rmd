@@ -232,7 +232,7 @@ coefficients <- optim(c(mu, sigma), function(theta)
 coefficients
 ```
 
-### Pearson Chi-squared goodness of fit test
+### Pearson Chi-squared goodness of fit test    
  
 We need to rearrange bins in order to avoid any low count (less then 5) that causes poor chi-squared approximation.
 
@@ -356,7 +356,7 @@ cat("p-value = ",pValue)
 ```
 
 
-The pValue is very low, we can reject the null hypothesis the data come from the MLE fitted normal distribution. 
+The pValue is very low, we can reject the null hypothesis that the data come from the MLE fitted normal distribution. 
 
 
 # Pearson calculation in R
