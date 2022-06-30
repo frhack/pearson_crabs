@@ -315,9 +315,12 @@ pred <- mapply(function(a,b) predict(a,b,coefficients[1], coefficients[2], sum(p
 thresh = head(thresh,-1)
 
 #popt = c(0, pop, 0)
-#chisq <- sum((pred-popt)^2 / pred)
-#df <- length(popt) - 1
-#ss= pchisq(chisq, df=df, lower.tail=FALSE)
+#predt = c(0, pop, 0)
+#popt = pop
+#predt = pred
+#chisq <- sum((predt-popt)^2 / predt)
+#df <- length(popt) - 2
+#ss= pchisq(chisq, df=df, lower.tail=F)
 #ss
 
 
@@ -359,7 +362,7 @@ set.seed(0)
 chisq.test(c(0, observed, 0), p=fit, simulate.p.value=T)
 
 
-chisq.test(c(0, observed, 0), p=fit, simulate.p.value=F)
+#chisq.test(c(0, observed, 0), p=fit, simulate.p.value=F)
 
 
 
