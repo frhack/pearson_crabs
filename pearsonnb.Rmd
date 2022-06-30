@@ -314,9 +314,10 @@ pred <- mapply(function(a,b) predict(a,b,coefficients[1], coefficients[2], sum(p
   
 thresh = head(thresh,-1)
 
-#chisq <- sum((pred-pop)^2 / pred)
-#df <- length(pop) - 2
-#ss= pchisq(chisq, df=6, lower.tail=FALSE)
+#popt = c(0, pop, 0)
+#chisq <- sum((pred-popt)^2 / pred)
+#df <- length(popt) - 1
+#ss= pchisq(chisq, df=df, lower.tail=FALSE)
 #ss
 
 
@@ -825,11 +826,13 @@ mixplot
 
 # References
 
-[On Certain Correlated Variations in Carcinus maenas (1893) W. F. R. Weldon](https://royalsocietypublishing.org/doi/pdf/10.1098/rspl.1893.0078)
+[On Certain Correlated Variations in Carcinus maenas - (1893) W. F. R. Weldon](https://royalsocietypublishing.org/doi/pdf/10.1098/rspl.1893.0078)
 
 [Mathematical Contributions to the Theory of Evolution - (1894) Karl Pearson](https://royalsocietypublishing.org/doi/epdf/10.1098/rsta.1894.0003)
 
 [Moment Varieties of Gaussian Mixtures - Carlos Amendola](https://www.researchgate.net/publication/282905710_Moment_Varieties_of_Gaussian_Mixtures)
+
+[Algebraic Statistics of Gaussian Mixtures - Carlos Amendola](https://depositonce.tu-berlin.de/bitstream/11303/7284/4/amendola_ceron_carlos.pdf)
 
 [mclust 5: Clustering, Classification and Density Estimation Using Gaussian Finite Mixture Models - Luca Scrucca](https://journal.r-project.org/archive/2016/RJ-2016-021/RJ-2016-021.pdf)
 
