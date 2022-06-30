@@ -232,7 +232,7 @@ coefficients <- optim(c(mu, sigma), function(theta)
 coefficients
 ```
 
-### Pearson Chi Square test
+### Pearson Chi-squared goodness of fit test
  
 We need to rearrange bins in order to avoid any low count (less then 5) that causes poor chi-squared approximation.
 
@@ -337,34 +337,21 @@ geom_bar(aes(x = x, y = pop), stat = "identity",
 
 
 
-
-
 grid.arrange(h1,h2, ncol=2, as.table = FALSE, widths=c(1,1), heights=c(0.5))
 
 ```
 
-P-value from goodness-of-fit chisquare test
+
+$$\\[0.5in]$$
 
 
+#### P-value from approximated chisquare distribution
 ```{r}
-
-
-
-set.seed(0)
-chisq.test(c(0, observed, 0), p=fit, simulate.p.value=T)
-
-```
-
-P-value from approximated chisquare distribution
-
-```{r}
-
 
 chisq <- sum((pred-pop)^2 / pred)
-df <- length(pop) - 2
+df <- length(pop) - 3
 pValue= pchisq(chisq, df=df, lower.tail=F)
-pValue
-
+cat("p-value = ",pValue)
 
 ```
 
