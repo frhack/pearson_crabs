@@ -314,14 +314,6 @@ pred <- mapply(function(a,b) predict(a,b,coefficients[1], coefficients[2], sum(p
   
 thresh = head(thresh,-1)
 
-#popt = c(0, pop, 0)
-#predt = c(0, pop, 0)
-#popt = pop
-#predt = pred
-#chisq <- sum((predt-popt)^2 / predt)
-#df <- length(popt) - 2
-#ss= pchisq(chisq, df=df, lower.tail=F)
-#ss
 
 
 testdt <- data.frame(x = thresh, count = pred)
@@ -351,7 +343,7 @@ grid.arrange(h1,h2, ncol=2, as.table = FALSE, widths=c(1,1), heights=c(0.5))
 
 ```
 
-
+P-value from goodness-of-fit chisquare test
 
 
 ```{r}
@@ -361,10 +353,17 @@ grid.arrange(h1,h2, ncol=2, as.table = FALSE, widths=c(1,1), heights=c(0.5))
 set.seed(0)
 chisq.test(c(0, observed, 0), p=fit, simulate.p.value=T)
 
+```
 
-#chisq.test(c(0, observed, 0), p=fit, simulate.p.value=F)
+P-value from approximated chisquare distribution
+
+```{r}
 
 
+chisq <- sum((pred-pop)^2 / pred)
+df <- length(pop) - 2
+pValue= pchisq(chisq, df=df, lower.tail=F)
+pValue
 
 
 ```
