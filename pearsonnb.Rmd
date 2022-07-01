@@ -273,7 +273,7 @@ zdf
 
 ```
 
-Then, for every bin, we predict the population count in the the normal distribution fitted with MLE, and apply the standard chi-squared test (observed frequency vs theoretical probability). 
+Then, for every bin, we predict the population count in the the normal distribution fitted with MLE, and finally we can apply the Pearson Chi-squared goodness of fit test. 
 
 
 ```{r}
