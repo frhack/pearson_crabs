@@ -162,7 +162,7 @@ ggboxplot(crabs.df,
           color = 'type',
           y = "ratioj",title = "", ylab = "Ratio", xlab="")+
 
-  geom_jitter(size = 0.05, colour = 2)
+  geom_jitter(size = 0.4, colour = 2)
 
 
 ```
@@ -359,7 +359,7 @@ cat("p-value = ",pValue)
 The pValue is very low, we can reject the null hypothesis that the data come from the MLE fitted normal distribution. 
 
 
-# Pearson calculation in R
+# Pearson calculations in R
 
 We can repeat in R the same calculations done by Karl Pearson by hand.
 At this time there is not a package in R that implements the method of moments used by Pearson, so I used the code from Carlos Amendola in the appendix of his valuable PhD thesis [Algebraic Statistics of Gaussian Mixtures](https://depositonce.tu-berlin.de/bitstream/11303/7284/4/amendola_ceron_carlos.pdf).
